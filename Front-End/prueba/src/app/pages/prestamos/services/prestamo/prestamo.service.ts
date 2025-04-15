@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { environments } from '../../../../../environments/environments';
+import { Prestamo } from '../../interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class PrestamoService {
 
   createPrestamo = 'createPrestamo';
   getPrestamo = 'prestamos';
-  postUls = 'post';
+  postUls = 'posts';
 
   constructor( private http :HttpClient) { }
 
@@ -20,9 +21,9 @@ export class PrestamoService {
     );
   }
 
-  postPrestamo(){
+  postPrestamo(nuevaSolicitud : Prestamo){
     return lastValueFrom(
-      this.http.get(environments.service + this.createPrestamo)
+      this.http.post(environments.service + this.createPrestamo,nuevaSolicitud)
     );
   }
 

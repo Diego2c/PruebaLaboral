@@ -1,0 +1,41 @@
+<div class="container">
+
+  <div class="container mt-4" *ngIf="dataList && dataList.length > 0">
+    <h2>Listado de Préstamos</h2>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>DPI</th>
+          <th>Monto</th>
+          <th>Cuotas</th>
+          <th>Fecha de Registro</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let prestamo of dataList">
+          <td>{{ prestamo.nombre }}</td>
+          <td>{{ prestamo.dpi }}</td>
+          <td>${{ prestamo.monto }}</td>
+          <td>{{ prestamo.cuotas }}</td>
+          <td>{{ prestamo.recha_registro | date:'short' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row mt-4" *ngIf="posts && posts.length > 0">
+    <h2>Listado de Post</h2>
+
+    <div *ngFor="let post of posts" class="col-md-4 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{ post.title }}</h5>
+          <p class="card-text">{{ post.body | slice:0:100 }}...</p>
+          <a href="#" class="btn btn-secondary">Leer más</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

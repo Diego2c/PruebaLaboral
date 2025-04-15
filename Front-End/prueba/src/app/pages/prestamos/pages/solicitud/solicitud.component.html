@@ -1,1 +1,67 @@
-<p>solicitud works!</p>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+      <h2 class="text-center mb-4">Formulario de Solicitud de Préstamo</h2>
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label for="dpi" class="form-label">DPI:</label>
+          <input
+            id="dpi"
+            type="text"
+            class="form-control"
+            formControlName="dpi"
+            placeholder="Ingresa tu DPI"
+          />
+          <div *ngIf="form.get('dpi')?.invalid && form.get('dpi')?.touched" class="text-danger">
+            <small>DPI requerido (mínimo 8 dígitos)</small>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="nombre" class="form-label">Nombre:</label>
+          <input
+            id="nombre"
+            type="text"
+            class="form-control"
+            formControlName="nombre"
+            placeholder="Ingresa tu nombre completo"
+          />
+          <div *ngIf="form.get('nombre')?.invalid && form.get('nombre')?.touched" class="text-danger">
+            <small>Nombre requerido</small>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="monto" class="form-label">Monto solicitado:</label>
+          <input
+            id="monto"
+            type="number"
+            class="form-control"
+            formControlName="monto"
+            placeholder="Ingresa el monto"
+          />
+          <div *ngIf="form.get('monto')?.invalid && form.get('monto')?.touched" class="text-danger">
+            <small>Monto debe ser mayor a 0</small>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="cuotas" class="form-label">Cuotas:</label>
+          <input
+            id="cuotas"
+            type="number"
+            class="form-control"
+            formControlName="cuotas"
+            placeholder="Ingresa el número de cuotas"
+          />
+          <div *ngIf="form.get('cuotas')?.invalid && form.get('cuotas')?.touched" class="text-danger">
+            <small>Cuotas debe ser mayor a 0</small>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100 mt-3" [disabled]="form.invalid">Enviar solicitud</button>
+      </form>
+    </div>
+  </div>
+</div>
