@@ -18,7 +18,7 @@ export const getPrestamo = async (req, res) => {
         const pool = await getConnection();
         const result = await pool.request()
             .input('id', sql.Int, req.params.id)
-            .query('SELECT * FROM Prestamo WHERE id = @id');
+            .query('SELECT * FROM Prestamo WHERE id_prestamo = @id');
         res.json(result.recordset);
     }catch (error) {
         console.error('Error fetching prestamos:', error);
